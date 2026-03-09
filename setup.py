@@ -1,4 +1,5 @@
 import os
+from glob import glob
 
 from setuptools import setup
 
@@ -12,7 +13,7 @@ setup(
     data_files=[
         ("share/ament_index/resource_index/packages", ["resource/" + package_name]),
         (share_dir, ["package.xml"]),
-        (os.path.join(share_dir, "launch"), ["launch/endpoint.py"]),
+        (os.path.join(share_dir, "launch"), glob("launch/*.py")),
     ],
     install_requires=["setuptools"],
     zip_safe=True,

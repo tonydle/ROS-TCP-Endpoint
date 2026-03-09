@@ -44,6 +44,8 @@ class RosSubscriber(RosReceiver):
         self.queue_size = queue_size
 
         qos_profile = QoSProfile(depth=queue_size)
+        qos_profile.reliability = QoSReliabilityPolicy.BEST_EFFORT
+        qos_profile.durability = QoSDurabilityPolicy.VOLATILE
 
         # Start Subscriber listener function
         self.subscription = self.create_subscription(
